@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>E-Bot</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static',filename='imagenes/iconop.ico')}}" />
+    <link rel="stylesheet" href="{{url_for('static',filename='estilos.css')}}" />
+</head>
+<body>
+    <header>
+        <section class="logotipo">
+            <img src="{{url_for('static',filename='imagenes/upg.jpg')}}" width="200" height="100" />
+        </section>
+        <section class="Titulo">
+            <h1>E-bot 00</h1>
+            <h2>Modo manual</h2>
+        </section>
+        <section class="Menu">
+            <nav>
+                <ul>
+                    <li><a href="/"> inicio </a></li>
+                    <li><a href="/modo_manual"> Modo manual </a></li>
+                    <li><a href="/"> Modo Programacion </a></li>
+                    <li><a href="/"> Modo Visor </a></li>
+                    <li><a href="/"> Tutorial </a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <!--Inicia seccion principal, se subdivide en secciones segun el control que se quiera hacer, esta la parte de camara,
+        la parte de traccion, la parte de control directo, y la parte de sensores-->
+    <section class="Main">
+
+        <!-- Inicia la clase camara consta de una imagen, y de dos entradas typo texto se ingresan valores de 0-180 grados,
+            requiere de un boton de enviar-->
+        <section class="Camara">
+            <img src="{{ url_for('video_feed') }}" alt="Camara_RT" width="400" height="300" />
+            <!--<img src="{{url_for('static',filename='/imagenes/logo.jpg')}}" alt="Camara_RT" width="400" height="300" />-->
+            <section class="Camara_control">
+                <form action="/modo_manual/comando_armado/base" method="post">
+                    <label for="Servo1">Posicion 1</label>
+                    <input type="text" id="Servo1" name="Servo1" placeholder="valor 0-180" /><br>
+                    <label for="Servo2">Posicion 2</label>
+                    <input type="text" id="Servo2" name="Servo2" placeholder="valor 0-180" /><br>
+                    <input type="submit" id="send-posicion" name="posicion" value="Registrar" />
+                </form>
+            </section>
+        </section>
+
+        <!-- Inicia la clase traccion, cosnta de 6 botones, 5 se dedican a direccion, 2 entradas texto, requieren un valor 0-100
+            con un boton de enviar comando-->
+        <section class="Traccion">
+            <form action="/modo_manual/comando_directo/TRA100100" method="post">
+                <input id="adelante" type="submit" value="adelante" />
+            </form>
+            <form action="/modo_manual/comando_directo/TRA300100" method="post">
+                <input id="izquierda" type="submit" value="Izquierda" />
+            </form>
+            <form action="/modo_manual/comando_directo/TRA400100" method="post">
+                <input id="derecha" type="submit" value="Derecha" />
+            </form>
+            <form action="/modo_manual/comando_directo/TRA200100" method="post">
+                <input id="atras" type="submit" value="Atras" />
+            </form>
+            <form action="/modo_manual/comando_directo/TRA500100" method="post">
+                <input id="stop" type="submit" value="Stop" />
+            </form>
+
+            <section class="Traccion_Velocidad">
+                <form action="/modo_manual/comando_armado/traccion" method="post">
+                    <label for="Velocidad_1">Velocidad 1</label>
+                    <input type="text" id="Velocidad_1" name="Velocidad_1" placeholder="Valor 0-100" /><br>
+                    <label for="Velocidad_2">Velocidad 2</label>
+                    <input type="text" id="Velocidad_2" name="Velocidad_2" placeholder="Valor 0-100" /><br>
+                    <input type="submit" id="send-velocidad" name="velocidad" value="Registrar" />
+                </form>
+            </section>
+        </section>
+
+        <!-- Inicia la clase sensores, hay dos botones, uno asociado a una entrada (ultrasonico), y otro 
+            asociado a 6 (QTR-8A)-->
+        <section class="Sensores">
+            <section class="Sensores_Utltrasonico">
+                <form action="/modo_manual/comando_directo/UTD003001" method="post">
+                    <label for="Ultrasonico">Distancia (cm): </label>
+                    <input type="text" id="Ultrasonico" name="Ultrasonico" Value= {{ val_ut }} /><br>
+                    <input type="submit" id="send-solicitud_u" name="solicitud_u" value="Actualizar" />
+                </form>
+            </section>
+
+            <section class="Sensores_QTR">
+                <form action="/modo_manual/comando_directo/QTD008001" method="post">
+                    <label for="QTR_1">valor 1 (indefinido): </label>
+                    <input type="text" id="QTR_1" name="QTR_1" Value= {{ valq_1 }} /><br>
+                    <label for="QTR_2">valor 2 (indefinido): </label>
+                    <input type="text" id="QTR_2" name="QTR_2" Value= {{ valq_2 }} /><br>
+                    <label for="QTR_3">valor 3 (indefinido): </label>
+                    <input type="text" id="QTR_3" name="QTR_3" Value= {{ valq_3 }} /><br>
+                    <label for="QTR_4">valor 4 (indefinido): </label>
+                    <input type="text" id="QTR_4" name="QTR_4" Value= {{ valq_4 }} /><br>
+                    <label for="QTR_5">valor 5 (indefinido): </label>
+                    <input type="text" id="QTR_5" name="QTR_5" Value= {{ valq_5 }} /><br>
+                    <label for="QTR_6">valor 6 (indefinido): </label>
+                    <input type="text" id="QTR_6" name="QTR_6" Value= {{ valq_6 }} /><br>
+                    <input type="submit" id="send-solicitud_qtr" name="solicitud_qtr" value="Actualizar" />
+                </form>
+            </section>
+        </section>
+
+        <!-- inicia la clase para introducir comando directamente-->
+        <section class="Comandos">
+            <form action="/modo_manual/comando_armado/comandos" method="post">
+                <label for="comando">Comando:</label>
+                <input type="text" id="comando" name="comando" placeholder="XX-X-XXX-XXX" /><br>
+                <input type="submit" id="send-comando" name="comando" value="Registrar" />
+            </form>
+        </section>
+
+    </section>
+
+    <footer>
+        <p>Datos de contacto</p>
+    </footer>
+
+</body>
+</html>

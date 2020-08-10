@@ -1,0 +1,192 @@
+﻿*{
+    margin:0;
+    padding:0;
+}
+
+body
+{
+    background:grey;
+}
+
+
+header, .Main, footer {
+    background:grey;
+    width: 90%;
+    max-width: 1920px;
+    margin: 10px auto;
+}
+
+header nav{
+    background:#528FD5;
+    overflow:hidden;
+}
+
+header nav ul{
+    list-style:none;
+}
+header nav ul li {
+    float:left;
+}
+
+header nav ul li a {
+    padding: 10px 20px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    background: #528FD5;
+}
+
+header nav ul li a:hover{
+    background:#75ACEC;
+}
+
+
+header .logotipo {
+    background: #aaa;
+    height:100px;
+    width: 18.5%;
+    margin-right: 1.5%;
+    margin-bottom: 1%;
+    float: left;
+}
+
+header .logotipo img {
+    border-image:round;
+}
+
+
+header .Menu {
+    background: #aaa;
+    height: 40px;
+    width: 78.5%;
+    margin-right: 1.5%;
+    float: left;
+}
+
+header .Titulo {
+    background: #01DFD7;
+    height: 60px;
+    width: 78.5%;
+    margin-right: 1.5%;
+    float: left;
+}
+
+footer {
+    background: #000;
+    color: #FFF;
+    clear: both;
+    padding: 10px 0px;
+    text-align: center;
+}
+/*aqui inician las cosas sin hacer*/
+
+.Camara {
+    position: relative;
+    clear: both;
+    border-radius: 10px;
+    margin-top: 1%;
+    width: 60%;
+    margin-right: 1.5%;
+    /*float: right;*/
+}
+.Traccion {
+    position:relative;
+    margin-top:-330px;
+    width: 25%;
+    margin-left:35%;
+}
+#adelante{
+	position:relative;
+	height:45px;
+	width:100px;
+	margin:1%;
+	left:40%;
+	padding:5px;
+	background:#00CCCC;
+	border-radius: 122px 122px 122px 122px;
+	border-style:solid;
+	border-width:3px;
+}
+#izquierda{
+	position:absolute;
+	height:45px;
+	width:100px;
+	margin:0%;
+	left:10%;
+	padding:5px;
+	background:#00CCCC;
+	border-radius: 122px 122px 122px 122px;
+	border-style:solid;
+	border-width:3px;
+}
+#derecha{
+	position:relative;
+	height:45px;
+	width:100px;
+	margin:0%;
+	left:70%;
+	padding:5px;
+	background:#00CCCC;
+	border-radius: 122px 122px 122px 122px;
+	border-style:solid;
+	border-width:3px;
+}
+#atras{
+	position:relative;
+	height:45px;
+	width:100px;
+	margin:1%;
+	left:40%;
+	padding:5px;
+	background:#00CCCC;
+	border-radius: 122px 122px 122px 122px;
+	border-style:solid;
+	border-width:3px;
+}
+#stop{
+position:relative;
+	height:45px;
+	width:100px;
+	margin:1%;
+	left:0%;
+	padding:5px;
+	background:red;
+	border-radius: 122px 122px 122px 122px;
+	border-style:solid;
+	border-width:3px;
+
+}
+
+#atras:hover{
+	background:#33FF99;
+	}
+#adelante:hover{
+	background:#33FF99;
+	}
+#izquierda:hover{
+	background:#33FF99;
+	}
+#derecha:hover{
+	background:#33FF99;
+	}
+#stop:hover{
+	background:black;
+	color:white;
+}
+.Sensores {
+    position:relative;
+    clear: both;
+    margin-top:-300px;
+    width: 30%;
+    margin-left:65%;
+    /*float: right;*/
+}
+
+.Comandos {
+    clear: both;
+    margin-top: 17%;
+    width: 100%;
+    margin-right: 1.5%;
+    background: #01DFD7;
+    /*float: right;*/
+}
